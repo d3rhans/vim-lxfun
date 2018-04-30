@@ -24,7 +24,7 @@ catch
 endtry
 
 augroup lxfun
-autocmd FileType tex set omnifunc=lxfun#complete
+autocmd FileType tex set omnifunc=lxfun#compl#complete
 augroup END
 
 let &cpoptions = s:save_cpo
