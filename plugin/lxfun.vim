@@ -14,6 +14,7 @@ let g:loaded_lxfun = 1
 
 let g:lxfun_db_dir = $HOME . '/.vim/lxfun/'
 let g:lxfun_env_db = 'envs.txt'
+let g:lxfun_ctags_bib_type = 'B'
 
 " Environments for completion
 let g:lxfun_envs = { 'changed': 0, 'db': [] }

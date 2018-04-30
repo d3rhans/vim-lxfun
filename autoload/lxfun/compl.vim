@@ -17,6 +17,19 @@ function! lxfun#compl#filename_complete(base)
     return l:files_post
 endfunction
 
+function! lxfun#compl#citation_complete(base)
+    let l:tags = taglist('.*') 
+    let l:result = []
+
+    for l:tag in l:tags
+        if l:tag['kind'] ==# g:lxfun_ctags_bib_type
+            call add(l:result, l:tag['name'])
+        endif 
+    endfor
+
+    return l:result
+endfunction
+
 function! lxfun#compl#complete(findstart, base)
     if a:findstart
         " locate the start of the base
@@ -33,6 +46,10 @@ function! lxfun#compl#complete(findstart, base)
 
         if lxfun#context#filename_required()
             return lxfun#compl#filename_complete(a:base)
+        endif
+
+        if lxfun#context#citation_required()
+            return lxfun#compl#citation_complete(a:base)
         endif
 
         " Debug...
