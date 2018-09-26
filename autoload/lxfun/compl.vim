@@ -18,16 +18,12 @@ function! lxfun#compl#filename_complete(base)
 endfunction
 
 function! lxfun#compl#citation_complete(base)
-    let l:tags = taglist('.*') 
-    let l:result = []
+    try
+        execute 'source ' . g:lxfun_bibcompl_file
+    catch
+    endtry
 
-    for l:tag in l:tags
-        if l:tag['kind'] ==# g:lxfun_ctags_bib_type
-            call add(l:result, l:tag['name'])
-        endif 
-    endfor
-
-    return l:result
+    return g:lxfun_bib
 endfunction
 
 function! lxfun#compl#complete(findstart, base)
